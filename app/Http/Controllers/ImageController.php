@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Image;
 use Illuminate\Http\Request;
+use Storage;
 
 class ImageController extends Controller
 {
@@ -39,6 +40,7 @@ class ImageController extends Controller
         //
         
         $path = $request->file('image')->store('images','public');
+        Storage::disk('s3')->store($path,$request->file('image'));
         $imageable_id = $request->imageable_id;
 
         $imageable_type = $request->imageable_type;
