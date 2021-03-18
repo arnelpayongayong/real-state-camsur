@@ -2,7 +2,6 @@
 
 use App\Models\House;
 use Illuminate\Http\Request;
-
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -24,10 +23,14 @@ Route::group(['middleware' => 'auth:api'], function () {
 
 });
 
-Route::post('house/create','HouseController@store');
-Route::get('house/index','HouseController@index');
-Route::get('house/search/{id}','HouseController@edit');
-Route::put('house/edit/{id}','HouseController@update');
+Route::prefix('house')->group(function () {
+    Route::post('create','HouseController@store');
+    Route::get('index','HouseController@index');
+    Route::get('search/{id}','HouseController@edit');
+    Route::put('edit/{id}','HouseController@update');
+    Route::delete('delete/{id}','HouseController@destroy');
+});
+
 // AUTH
 
 Route::post('auth/register', 'AuthController@register');
@@ -53,17 +56,7 @@ Route::group(['middleware' => 'jwt.refresh'], function(){
 });
 
 
-Route::get('testing',function(){
-  // $house = App\Models\House::find(1);
 
-  // foreach($house->images as $image)
-  // {
-  // }
-
-  // return $house;
-   Storage::delete('KDMpK1vDWgw1KOjS1JxEyFxr7VO2JEqdjJAx9Lxc.png');
-    
-});
 
 Route::post('image/store','ImageController@store');
 Route::post('feature/store','FeatureController@store');
@@ -75,3 +68,19 @@ Route::post('agent/store','AgentController@store');
 Route::get('agent/list','AgentController@index');
 
 Route::post('sample/email','HouseController@sendEmail');
+
+
+
+
+
+// Route::get('testing',function(){
+//   // $house = App\Models\House::find(1);
+
+//   // foreach($house->images as $image)
+//   // {
+//   // }
+
+//   // return $house;
+//    Storage::delete('KDMpK1vDWgw1KOjS1JxEyFxr7VO2JEqdjJAx9Lxc.png');
+    
+// });

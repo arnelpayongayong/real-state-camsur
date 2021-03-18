@@ -160,9 +160,16 @@ class HouseController extends Controller
      * @param  \App\House  $house
      * @return \Illuminate\Http\Response
      */
-    public function destroy(House $house)
+    public function destroy($id)
     {
         //
+        $house = House::find($id);
+        $house->delete();
+
+        return response()->json([
+            'house' => $house,
+            'status' => 200
+        ], 200);
     }
 
     public function sendEmail(Request $request)

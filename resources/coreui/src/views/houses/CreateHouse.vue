@@ -51,8 +51,14 @@ export default {
          getAgents(){
              this.axios.get('/agent/list').then(response => {
                  this.agents = response.data
-                 this.agent = this.agents[0]
              })
+         },
+         selectFirstAgent(){
+             setTimeout(() => {
+                    this.agent = this.agents[0]
+                    this.agentImage = this.agent.images[0].path
+                    this.selectedAgentID = this.agent.id
+             },1000)
          },
          uploadImage(e){
 
@@ -87,12 +93,6 @@ export default {
         saveImage(){
 
             setTimeout(() => this.imagesFile.forEach(image => {
-                   let sample = this.house
-
-                   console.log('start')
-                   console.log(this.house)
-                   console.log(sample)
-                   console.log('end')
                    image.set('imageable_id',this.house.id)
                    axios.post('/image/store',image)
             }), 2000)
@@ -132,12 +132,13 @@ export default {
     },
     created(){
         this.getAgents()
+        this.selectFirstAgent()
           setTimeout(() => {
-                    console.log(this.agents)
                     if(this.agents.length == 0){
                         this.$router.push('/agent/create')
                     }
           }, 2000)
+
         
     }
 }

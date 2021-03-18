@@ -18,7 +18,7 @@
                <div class="col-auto">
                 <label>LISTING TYPE</label>
                 <select class="form-control" v-model="house.listing_type">
-                    <option value="House and Lot">HOUSE AND LOT</option>
+                    <option value="House and Lot" selected>HOUSE AND LOT</option>
                     <option value="Condominium">CONDOMINIUM</option>
                     <option value="Lot">LOT</option>
                     <option value="Land">LAND</option>
@@ -122,32 +122,29 @@
         <div class="profile-picture" style="height: 300px;width: 250px;background:gray">
             <img :src="'/../storage/' + agentImage" class="image" style="height: 300px;width: 250px;"/>
         </div>
-
-       <input style="margin-bottom: 20px" type="file" placeholder="Image Upload" @change="uploadImage"  accept="image/x-png,image/jpeg" />
     </div>
     <form @submit.prevent="save()">
         <div class="mb-3">
             <label for="firstname" class="form-label">First Name</label>
-            <input type="text" class="form-control" id="first" aria-describedby="firstnameHelp" v-model="agent.firstname">
+            <input type="text" class="form-control" id="first" aria-describedby="firstnameHelp" v-model="agent.firstname" disabled>
         </div>
         <div class="mb-3">
             <label for="middlename" class="form-label">Middle Name</label>
-            <input type="text" class="form-control" id="middlename" aria-describedby="middlenameHelp"  v-model="agent.middlename">
+            <input type="text" class="form-control" id="middlename" aria-describedby="middlenameHelp"  v-model="agent.middlename" disabled>
         </div>
         <div class="mb-3">
             <label for="lastname" class="form-label">Last Name</label>
-            <input type="text" class="form-control" id="lastname" aria-describedby="lastnameHelp"  v-model="agent.lastname">
+            <input type="text" class="form-control" id="lastname" aria-describedby="lastnameHelp"  v-model="agent.lastname" disabled>
         </div>
         <div class="mb-3">
             <label for="email" class="form-label">Email address</label>
-            <input type="email" class="form-control" id="email" aria-describedby="emailHelp" v-model="agent.email">
+            <input type="email" class="form-control" id="email" aria-describedby="emailHelp" v-model="agent.email" disabled>
         </div>
 
         <div class="mb-3">
             <label for="contact" class="form-label">Contact No.  </label>
-            <input type="text" class="form-control" id="contact" aria-describedby="contactHelp" v-model="agent.contactNo">
+            <input type="text" class="form-control" id="contact" aria-describedby="contactHelp" v-model="agent.contactNo" disabled>
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 </div>
 </div>

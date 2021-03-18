@@ -75,7 +75,7 @@ export default new Router({
     {
       path: '/',
       name: 'Landing',
-      redirect: '/users',
+      redirect: '/houses',
       component: Full,
       forbiddenRedirect: '/403',
       children: [

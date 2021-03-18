@@ -38,7 +38,7 @@ export default {
             this.$router.push({ name: 'Show House', params: { id} })
         },
         search(){
-            this.$router.push({name: 'House'})
+            this.$router.push({name: 'Search House'})
         }
     },
     filters: {

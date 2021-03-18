@@ -11,7 +11,7 @@
               <div class="card p-4">
                 <div class="card-body">
                   <h1>Login</h1>
-                  <p class="text-muted">Sign In to your account</p>
+                  <p class="text-muted">Signs In to your account</p>
                   <form autocomplete="off" @submit.prevent="login">
                     <div class="input-group mb-3">
                       <span class="input-group-addon"><i class="icon-user"></i></span>
@@ -69,7 +69,7 @@
               this.isLoading = false
             },
             rememberMe: true,
-            redirect: '/users',
+            redirect: '/houses/list',
             fetchUser: true,
         });
       },

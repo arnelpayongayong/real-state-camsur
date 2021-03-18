@@ -89,7 +89,7 @@ export default {
             this.saveAgent()
             this.saveImage()
 
-            //this.$router.push('/houses/list')
+            this.$router.push('/houses/list')
         }
     }
 }

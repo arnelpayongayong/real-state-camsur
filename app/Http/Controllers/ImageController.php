@@ -39,15 +39,17 @@ class ImageController extends Controller
     {
         //
         
+        //$path = $request->file('image')->store('images','s3');
         $path = $request->file('image')->store('images','public');
-        Storage::disk('s3')->store($path,$request->file('image'));
+
+        //echo Storage::disk('s3')->url($path);
         $imageable_id = $request->imageable_id;
 
         $imageable_type = $request->imageable_type;
 
         Image::create(['path' => $path,'imageable_id' => $imageable_id,'imageable_type' => $imageable_type]);
 
-        return response()->json('OK', 200);
+        return $path;
     }
 
     /**

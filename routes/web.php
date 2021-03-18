@@ -31,3 +31,9 @@ Route::get('/', function () {
 Route::get('/{vue_capture?}', function () {
     return view('vue');
 })->where('vue_capture', '[\/\w\.-]*');
+
+// Route::get('get/image',function(){
+//     return Storage::disk('s3')->response('images/0SQQB9LNl2avNakDCntvU0cm2tEeYJwn7SlOPGzk.jpg');
+
+
+//   });

@@ -1,20 +1,26 @@
 <template>
-    <div>   
-
+    <div class="container-gallery">   
         <div class="photo-gallery">
-            <div class="container">
+            <div>
                 <div class="intro">
                     <h2 class="text-center">{{house.title}} Gallery</h2>
                     <p class="text-center">{{house.description}}</p>
                     <h1 style="font-size:30px" class="text-center">₱ {{new Intl.NumberFormat().format(house.price)}}</h1>
                 </div>
-            <div class="row photos">
-                <div class="col-sm-6 col-md-4 col-lg-3 item" v-for="(image,index) in house.images" :key="index">
+            <div class="images">
+                <div class="image-item" v-for="(image,index) in house.images" :key="index">
                     <a :href="'/../storage/' + image.path" data-lightbox="photos">
                     <img class="img-fluid" :src="'/../storage/' + image.path" height="640" width="426"></a>
                 </div>
             </div>
             </div>
+        </div>
+
+        <div class="features" style="">
+            <h1>Features</h1>
+            <ul>
+                <li v-for="(feature,index) in house.features" :key="index">{{feature.feature}}</li>
+            </ul>
         </div>
 
         
@@ -128,8 +134,11 @@
 </script>
 
 <style>
-    .row {
-        row-gap: 3ch;
+    .container-gallery{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
     .photo-gallery {
         color:#313437;
@@ -148,7 +157,9 @@
     }
     .images{
         display: grid;
-        grid-template-columns: 500px 400px 400px;
+        grid-template-columns: 426px 426px 426px;
+        row-gap: 2px;
+        column-gap: 30px;
     }
     .images div{
         height: 400px;

@@ -122,8 +122,6 @@
             <div class="profile-picture" style="height: 300px;width: 250px;background:gray">
                 <img :src="'/../storage/' + agentImage" class="image" style="height: 300px;width: 250px;"/>
             </div>
-
-           <input style="margin-bottom: 20px" type="file" placeholder="Image Upload" @change="uploadImage"  accept="image/x-png,image/jpeg" />
         </div>
         <form @submit.prevent="save()">
             <div class="mb-3">
@@ -147,7 +145,6 @@
                 <label for="contact" class="form-label">Contact No.  </label>
                 <input type="text" class="form-control" id="contact" aria-describedby="contactHelp" v-model="agent.contactNo">
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>
 </div>

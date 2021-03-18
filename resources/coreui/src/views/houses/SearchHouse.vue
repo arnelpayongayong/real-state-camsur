@@ -76,7 +76,7 @@
     </section>
 
     <section class="content">
-         <h1 class="content-title">HOUSE AND LOT</h1>
+         <h1 class="content-title">LISTING</h1>
 
          <div class="house-lot-content" >
             <div class="house-item" v-for="(house,index) in searchHouses" :key="index" @click="showHouse(house.id)">
@@ -96,7 +96,7 @@
                         <label>LOT AREA {{house.lot_area}} sqft</label>
                     </div>
                     <div class="footer-address">
-                        <p>{{house.street}}</p>
+                        <p>{{house.street + ' ' + house.city + ' ' + house.province + ' ' + house.country}}</p>
                     </div>
                 </div>
             </div>
@@ -132,9 +132,9 @@ export default {
                 country : '',
                 province : '',
                 city : '',
-                minPrice : 100,
+                minPrice : 100000,
                 maxPrice : 10000000,
-                listing_type : ''
+                listing_type : 'House and Lot'
             }
         }
     },
@@ -314,7 +314,6 @@ section{
 }
 .house-item h1{
     position: absolute;
-    bottom: 0;
     font-weight: 500;
     display: block;
     background-color: white;
@@ -325,7 +324,7 @@ section{
 }
 .house-item .footer{
     background-color: #637065;
-    padding: 5%;
+    padding: 10%;
 }
 .house-item .footer .footer-details{
     display: flex;

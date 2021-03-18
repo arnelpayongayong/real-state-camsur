@@ -102,6 +102,10 @@ export default {
             this.updateHouse()
             this.saveImage()
             this.saveFeature()
+
+              this.$swal("Good job!", "Sucessfully Updated!", "success");
+
+            this.$router.push('/houses/list');
         },
         deleteFeature(id){
             this.axios.delete('/feature/'+ id).then(response => {
