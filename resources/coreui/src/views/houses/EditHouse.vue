@@ -8,7 +8,7 @@ export default {
     data(){
         return{
             house : {
-                listingType : 'House and Lot'
+                listing_type : 'House and Lot'
             },
             agents : [],
             agent : {},
@@ -27,17 +27,24 @@ export default {
              this.agent = this.agents.find(a => a.id == this.selectedAgentID)
              
              if(this.agent.images){
-                 console.log(this.agent)
                  this.agentImage = this.agent.images[0].path
-                 console.log(this.agentImage)
              }
          },
          getAgents(){
              this.axios.get('/agent/list').then(response => {
                  this.agents = response.data
-                 this.agent = this.agents[0]
              })
+             
+             this.getAgent()
          },
+        getAgent(){
+            setTimeout(() => {
+               this.agent = Object.assign(this.agent,this.house.agent)
+
+               this.selectedAgentID = this.agent.id
+               this.agentImage = this.agent.images[0].path
+            },1000)
+        },
         getHouse(){
             let id = this.$route.params.id
             this.axios.get(`house/search/${id}`).then(response => {
@@ -46,8 +53,8 @@ export default {
         },
         updateHouse(){
             this.house.agentID = this.selectedAgentID
+            console.log(this.house)
             this.axios.put(`house/edit/${this.house.id}`,this.house).then(response => {
-                 console.log( 'success')
             })
         },
          uploadImage(e){
@@ -58,7 +65,7 @@ export default {
                     const formData = new FormData
                     formData.set('image',e.target.files[i])
                     formData.set('imageable_id',this.house.id)
-                    formData.set('imageable_type','App\\M')
+                    formData.set('imageable_type','App\\Models\\House')
 
                     this.imagesFile.push(formData)
 
@@ -82,15 +89,12 @@ export default {
         },
         saveFeature(){
             this.features.forEach(f =>  {
-                console.log(f)
                 axios.post('/feature/store',{feature : f.feature,house_id : this.house.id})
             })
         },
         addFeature(){
             this.features.push({feature : this.feature})
             this.house.features.push({feature : this.feature})
-
-            console.log(this.house.features)
             
             this.feature = ''
         },

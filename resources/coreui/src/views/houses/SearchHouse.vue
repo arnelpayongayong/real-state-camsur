@@ -132,8 +132,8 @@ export default {
                 country : '',
                 province : '',
                 city : '',
-                minPrice : 100000,
-                maxPrice : 100000,
+                minPrice : 100,
+                maxPrice : 10000000,
                 listing_type : ''
             }
         }
@@ -156,12 +156,15 @@ export default {
         searchHouse(){
 
             console.log(this.houses)
+            // this.houses.forEach(house => {
+            //     console.log(Math.floor(house.price) + '<' + Math.floor(this.search.minPrice))
+            //     console.log(Math.floor(house.price) < Math.floor(this.search.minPrice))
+            // })
             this.searchHouses = this.houses.filter(house => house.listing_type == this.search.listing_type)
-
             if(this.search.minPrice != 0 && this.search.maxPrice != 0){
-                 console.log(this.minPrice)
-                 this.searchHouses = this.searchHouses.filter(house => house.price > this.search.minPrice)
-                 this.searchHouses = this.searchHouses.filter(house => house.price < this.search.maxPrice)
+
+                 this.searchHouses = this.searchHouses.filter(house => Math.floor(house.price) > Math.floor(this.search.minPrice))
+                 this.searchHouses = this.searchHouses.filter(house => Math.floor(house.price) < Math.floor(this.search.maxPrice))
             }
             if(this.search.country != ''){
                  this.searchHouses = this.searchHouses.filter(house => house.country == this.search.country)

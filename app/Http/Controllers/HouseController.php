@@ -145,7 +145,7 @@ class HouseController extends Controller
         $house->country = $request->country;
         $house->beds = $request->beds;
         $house->bathroom = $request->bathroom;
-        $house->listing_type = $request->listingType;
+        $house->listing_type = $request->listing_type;
         $house->is_sold = 0;
         $house->agent_id = $request->agentID;
         $house->save();
