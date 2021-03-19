@@ -60,6 +60,8 @@ import CreateAgent from '../views/agents/CreateAgent.vue'
 import EditAgent from '../views/agents/EditAgent.vue'
 import ListAgent from '../views/agents/ListAgent.vue'
 
+import Service from '../views/Services.vue'
+import About from '../views/About.vue'
 
 Vue.use(Router)
 Vue.use(VueAxios, axios)
@@ -227,6 +229,22 @@ export default new Router({
   component: ListAgent,
   meta: {
     auth: true
+  }
+},
+{
+  path : '/services',
+  name: 'Services',
+  component: Service,
+  meta: {
+    auth: false
+  }
+},
+{
+  path : '/about',
+  name: 'About',
+  component: About,
+  meta: {
+    auth: false
   }
 },
    {
