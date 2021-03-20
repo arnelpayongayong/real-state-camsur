@@ -1,5 +1,7 @@
 <template>
-    <div class="container-gallery">   
+   <div>
+        <Navbar/>
+        <div class="container-gallery">   
         <div class="photo-gallery">
             <div>
                 <div class="intro">
@@ -85,15 +87,15 @@
 
 
     </div>
-
-
-    
-
-
+    <Footer/>
+   </div>
 </template>
 
 <script>
+import Navbar from '../../custom/Navbar'
+import Footer from '../../custom/Footer'
     export default{
+        components : {Navbar,Footer},
         data(){
             return{
                 house : {
@@ -142,7 +144,7 @@
     }
     .photo-gallery {
         color:#313437;
-        background-color:#fff;
+        background-color:#ffeaa7 !important;
     }   
 
     .photo-gallery p {
